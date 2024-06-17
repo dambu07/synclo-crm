@@ -297,7 +297,7 @@ class SeoSettingForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'meta_description' : forms.Textarea(attrs={'rows':3}),
-            'seo_keywords' : forms.Textarea(attrs={'rows':4, 'placeholder' : 'software,application,marketer,developer'}),
+            'seo_keywords' : forms.Textarea(attrs={'rows':4, 'placeholder' : 'health,software,professional care'}),
         }
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -13,7 +13,7 @@ class websiteSetting(models.Model):
     
     author = models.CharField(max_length=200, default='Author Name', blank=True, null=True)
     email_address = models.EmailField(max_length=500, default='test@gmail.com', blank=True, null=True)
-    phone_or_whatsapp = models.CharField(max_length=20, default='88012454784', blank=True, null=True)
+    phone_or_whatsapp = models.CharField(max_length=20, default='+919505858999', blank=True, null=True)
     price_ragne = models.CharField(max_length=50, default='60$ to 7000$', blank=True, null=True)
     country = models.CharField(max_length=300, default='Your Country', blank=True, null=True)
     address = models.CharField(max_length=700, default='Your Address', blank=True, null=True)
@@ -48,7 +48,7 @@ class SeoSetting(models.Model):
     meta_title = models.CharField(max_length=500, blank=True, null=True)
     tag_line = models.CharField(max_length=600, blank=True, null=True)
     meta_description = models.TextField(blank=True, null=True)
-    seo_keywords = models.TextField(default='software,application,marketer,developer', blank=True, null=True)
+    seo_keywords = models.TextField(default='health,software,professional care', blank=True, null=True)
     meta_image = models.ImageField(upload_to='app_config/', blank=True, null=True)
 
     def __str__(self):
