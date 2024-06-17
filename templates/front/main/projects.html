@@ -1,0 +1,77 @@
+{% extends 'front/base.html' %}
+{% load static %}
+{% block title %} {{meta.meta_title}} - {{meta.meta_description}}{% endblock title %}
+{% block title1 %} {{meta.meta_title}} - {{seo_settings.meta_title}} {% endblock title1 %}
+{% block title2 %} {{meta.meta_title}} - {{seo_settings.meta_title}} {% endblock title2 %}
+{% block content %}
+        <!--=====================================-->
+        <!--=       Breadcrumb Area Start       =-->
+        <!--=====================================-->
+        <div class="breadcrum-area breadcrumb-banner">
+            <div class="container">
+                <div class="section-heading heading-left" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300">
+                    <h1 class="title h2">Our projects</h1>
+                    <p>Projects of {{settings.name}}.</p>
+                </div>
+                <div class="banner-thumbnail" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
+                    <img class="paralax-image" src="{% static 'front/assets/media/banner/banner-thumb-1.png'  %}" alt="Illustration">
+                </div>
+            </div>
+            <ul class="shape-group-8 list-unstyled">
+                <li class="shape shape-1" data-sal="slide-right" data-sal-duration="500" data-sal-delay="100">
+                    <img src="{% static 'front/assets/media/others/bubble-9.png'  %}" alt="Bubble">
+                </li>
+                <li class="shape shape-2" data-sal="slide-left" data-sal-duration="500" data-sal-delay="200">
+                    <img src="{% static 'front/assets/media/others/bubble-20.png'  %}" alt="Bubble">
+                </li>
+                <li class="shape shape-3" data-sal="slide-up" data-sal-duration="500" data-sal-delay="300">
+                    <img src="{% static 'front/assets/media/others/line-4.png'  %}" alt="Line">
+                </li>
+            </ul>
+        </div>
+        <!--=====================================-->
+        <!--=       Projects  Area Start        =-->
+        <!--=====================================-->
+        {% if projects %}
+        <section class="section section-padding-equal project-column-4 pt--200 pt_md--80 pt_sm--60">
+            <div class="container">
+                <div class="section-heading heading-left">
+                    <span class="subtitle">Our Project</span>
+                    <h2 class="title">Some of our <br> finest work.</h2>
+                </div>
+                <div class="axil-isotope-wrapper">
+                    <div class="isotope-button isotope-project-btn">
+                        <button data-filter="*" class="is-checked"><span class="filter-text">All Works</span></button>
+                        {% for category in categories %}
+                        <button data-filter=".{{category.title}}"><span class="filter-text">{{category.title}}</span></button>
+                        {% endfor %}
+                    </div>
+                    <div class="row row-35 isotope-list">
+                        {% for project in projects %}  
+                            <div class="col-md-4 project {{project.category}}">
+                                <div class="project-grid">
+                                    <div class="thumbnail">
+                                        <a href="{% url 'projectDetail' project.slug %}">
+                                            {% if project.image %}
+                                                <img src="{{project.image.url}}" alt="project">
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h4 class="title"><a href="{% url 'projectDetail' project.slug %}">{{project.title}}</a></h4>
+                                        <span class="subtitle">{{project.category}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <ul class="shape-group-7 list-unstyled">
+                <li class="shape shape-1"><img src="{% static 'front/assets/media/others/circle-2.png'  %}" alt="circle"></li>
+                <li class="shape shape-2"><img src="{% static 'front/assets/media/others/bubble-2.png'  %}" alt="Line"></li>
+                <li class="shape shape-3"><img src="{% static 'front/assets/media/others/bubble-1.png'  %}" alt="Line"></li>
+            </ul>
+        </section>
+        {% endif %}
+{% endblock content %}
